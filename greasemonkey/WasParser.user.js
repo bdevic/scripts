@@ -14,7 +14,7 @@ this.templates = {
 
 synthetic: 
 '{{#attributes}}\
-<property name="{{name}}"{{#kind}} kind="{{kind}}"{{/kind}}{{#password}} password="{{password}}"{{/password}}{{#javaName}} enumClass="{{javaPackage}}.{{javaName}}"{{/javaName}}{{#defaultValue}} default="{{{defaultValue}}}"{{/defaultValue}}{{^required}} required="{{required}}"{{/required}} label="{{label}}"{{#category}} category="{{category}}"{{/category}} description="{{{description}}}"/>\n\n\
+<property name="{{name}}"{{#kind}} kind="{{kind}}"{{/kind}}{{#password}} password="{{password}}"{{/password}}{{#javaName}} enum-class="{{javaPackage}}.{{javaName}}"{{/javaName}}{{#defaultValue}} default="{{{defaultValue}}}"{{/defaultValue}}{{^required}} required="{{required}}"{{/required}} label="{{label}}"{{#category}} category="{{category}}"{{/category}} description="{{{description}}}"/>\n\n\
 {{/attributes}}',
 
 enums:
@@ -72,7 +72,7 @@ function parsePage() {
         }
         else {
             attr.defaultValue = inputEl.val();
-            attr.kind = parseInt(attr.defaultValue) != NaN ? "integer" : null;
+            attr.kind = attr.defaultValue && !isNaN(attr.defaultValue) ? "integer" : null;
         }
         
         attributes.push(attr);
